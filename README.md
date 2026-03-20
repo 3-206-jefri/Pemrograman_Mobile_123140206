@@ -1,6 +1,6 @@
 # 👋 Selamat Datang di Repository Saya!
 
-Repository ini berisi kumpulan tugas mata kuliah **Pemrograman Mobile** (IF3111) di Institut Teknologi Sumatera.
+Repository ini berisi kumpulan tugas mata kuliah **Pemrograman Mobile**  di Institut Teknologi Sumatera.
 
 ## 👤 Identitas
 * **Nama:** Jefri Wahyu Fernando Sembiring
