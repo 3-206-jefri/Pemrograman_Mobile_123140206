@@ -15,8 +15,8 @@ Setiap tugas dikelola dalam direktori tersendiri untuk mempermudah navigasi. Sil
 | Folder | Deskripsi Singkat | Status |
 | :--- | :--- | :--- |
 | [**Tugas 1**](./Tugas1/) | Inisialisasi KMP & Greeting App | ✅ Selesai |
-| [**Tugas 2**](./Tugas2/) | News App (MVVM & List) | ✅ Selesai |
-| [**Tugas 3**](./Tugas3/) | My Profile App (UI Layouting) | ✅ Selesai |
+| [**Tugas 2**](./Tugas2/) | News App  | ✅ Selesai |
+| [**Tugas 3**](./Tugas3/) | My Profile App | ✅ Selesai |
 
 ---
 
