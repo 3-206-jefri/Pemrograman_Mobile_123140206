@@ -5,7 +5,7 @@ Repository ini berisi kumpulan tugas mata kuliah **Pemrograman Mobile** (IF3111)
 ## 👤 Identitas
 * **Nama:** Jefri Wahyu Fernando Sembiring
 * **NIM:** 123140206
-* **Kelas:** Pemrograman Mobile
+* **Kelas:** Pemrograman Mobile RA
 
 ---
 
