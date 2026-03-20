@@ -27,9 +27,7 @@ Aplikasi ini memiliki beberapa fitur utama yang mencakup:
 
 ## 📸 Tampilan Aplikasi (Screenshot)
 
-| Home Feed | List Berita | Loading/Detail |
-|:---:|:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/6959fe07-0c8d-4b44-9fe6-cddaeecefb40" width="200" alt="Screen 1"/> | <img src="https://github.com/user-attachments/assets/e00b2c26-e773-469d-a813-3a6254f674af" width="200" alt="Screen 2"/> | <img src="https://github.com/user-attachments/assets/34fa41f0-fe37-4424-af7b-d94fc73326ca" width="200" alt="Screen 3"/> |
+<img src="https://github.com/user-attachments/assets/6959fe07-0c8d-4b44-9fe6-cddaeecefb40" width="200" alt="Screen 1"/> 
 
 ---
 
