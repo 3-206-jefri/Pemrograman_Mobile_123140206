@@ -1,4 +1,4 @@
-# 👋 Selamat Datang di Repository Jefri!
+# 👋 Selamat Datang di Repository Saya!
 
 Repository ini berisi kumpulan tugas mata kuliah **Pemrograman Mobile** (IF3111) di Institut Teknologi Sumatera.
 
