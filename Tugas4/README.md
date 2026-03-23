@@ -1,4 +1,4 @@
-# Tugas 4 - Navigasi & State
+# Tugas 4 - Implementasi MVVM Pattern
 
 **Identitas Mahasiswa**
 - **Nama:** Jefri Wahyu Fernando Sembiring
