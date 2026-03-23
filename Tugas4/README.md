@@ -1,12 +1,11 @@
-# Tugas 4 - Pemrograman Perangkat Bergerak (Navigasi & State)
+# Tugas 4 - Navigasi & State
 
 **Identitas Mahasiswa**
 - **Nama:** Jefri Wahyu Fernando Sembiring
 - **NIM:** 123140206
-- **Link Repo:** [Masukkan Link Repo GitHub Anda di Sini]
 
 ## Deskripsi Tugas
-Mengembangkan aplikasi profil statis (Tugas 3) menjadi aplikasi dinamis yang mendukung navigasi antar halaman, manajemen status (State), serta fitur tambahan mode tampilan.
+Mengembangkan aplikasi profil statis (Tugas 3) menjadi aplikasi dinamis yang mendukung navigasi antar halaman, manajemen status, serta fitur tambahan mode tampilan.
 
 ## Fitur Aplikasi
 1. **Navigasi Dinamis**: Berpindah dari halaman profil utama ke halaman edit profil menggunakan `NavHost` dan `NavController`.
