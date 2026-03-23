@@ -17,6 +17,7 @@ Setiap tugas dikelola dalam direktori tersendiri untuk mempermudah navigasi. Sil
 | [**Tugas 1**](./Tugas1/) | Inisialisasi KMP & Greeting App | ✅ Selesai |
 | [**Tugas 2**](./Tugas2/) | News App  | ✅ Selesai |
 | [**Tugas 3**](./Tugas3/) | My Profile App | ✅ Selesai |
+| [**Tugas 4**](./Tugas4/) | Implementasi MVVM Pattern | ✅ Selesai |
 
 ---
 
