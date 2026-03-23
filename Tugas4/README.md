@@ -27,5 +27,3 @@ Mengembangkan aplikasi profil statis (Tugas 3) menjadi aplikasi dinamis yang men
 ## Teknologi
 - Kotlin Multiplatform
 - Compose Multiplatform
-- Jetpack Navigation Compose
-- Material Design 3
