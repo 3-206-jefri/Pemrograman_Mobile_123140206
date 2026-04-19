@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
             implementation(compose.materialIconsExtended)
+            implementation("androidx.navigation:navigation-compose:2.7.7")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

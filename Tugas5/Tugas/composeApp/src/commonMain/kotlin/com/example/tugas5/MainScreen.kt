@@ -21,6 +21,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+
 
 
 
@@ -79,11 +82,16 @@ fun MainScreen() {
             }
 
             // ── Detail Screen ──
-            composable(Screen.Detail.route) { backStackEntry ->
-                val id = backStackEntry.arguments?.getString("id")?.toIntOrNull() ?: 0
+            composable(
+                route = Screen.Detail.route,
+                arguments = listOf(
+                    navArgument("noteId") { type = NavType.IntType }
+                )
+            ) { backStackEntry ->
+                val noteId = backStackEntry.arguments?.getInt("noteId") ?: 0
                 DetailScreen(
-                    id = id,
-                    onEdit = { navController.navigate(Screen.EditNote.createRoute(id)) },
+                    noteId = noteId,
+                    onEdit = { navController.navigate(Screen.EditNote.createRoute(noteId)) },
                     onBack = { navController.popBackStack() },
                     onRefresh = refresh
                 )
@@ -100,10 +108,15 @@ fun MainScreen() {
             }
 
             // ── Edit Note Screen ──
-            composable(Screen.EditNote.route) { backStackEntry ->
-                val id = backStackEntry.arguments?.getString("id")?.toIntOrNull() ?: 0
+            composable(
+                route = Screen.EditNote.route,
+                arguments = listOf(
+                    navArgument("noteId") { type = NavType.IntType }
+                )
+            ) { backStackEntry ->
+                val noteId = backStackEntry.arguments?.getInt("noteId") ?: 0
                 EditNoteScreen(
-                    id = id,
+                    noteId = noteId,
                     onBack = {
                         refresh()
                         navController.popBackStack()
@@ -225,12 +238,12 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    id: Int,
+    noteId: Int,       // ✅ ganti id → noteId
     onEdit: () -> Unit,
     onBack: () -> Unit,
     onRefresh: () -> Unit
 ) {
-    var note by remember { mutableStateOf(NoteRepository.getById(id)) }
+    var note by remember { mutableStateOf(NoteRepository.getById(noteId)) }
 
     Scaffold(
         topBar = {
@@ -242,10 +255,9 @@ fun DetailScreen(
                     }
                 },
                 actions = {
-                    // Favorite & Delete tetap di topbar
                     IconButton(onClick = {
-                        NoteRepository.toggleFavorite(id)
-                        note = NoteRepository.getById(id)
+                        NoteRepository.toggleFavorite(noteId)
+                        note = NoteRepository.getById(noteId)
                         onRefresh()
                     }) {
                         Icon(
@@ -261,7 +273,7 @@ fun DetailScreen(
                         )
                     }
                     IconButton(onClick = {
-                        NoteRepository.delete(id)
+                        NoteRepository.delete(noteId)
                         onRefresh()
                         onBack()
                     }) {
@@ -274,7 +286,6 @@ fun DetailScreen(
                 }
             )
         },
-        // ✅ FAB untuk Edit — melayang di kanan bawah
         floatingActionButton = {
             FloatingActionButton(onClick = onEdit) {
                 Icon(Icons.Default.Edit, contentDescription = "Edit Note")
@@ -378,8 +389,11 @@ fun AddNoteScreen(onBack: () -> Unit) {
 ────────────────────────────────────────────── */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditNoteScreen(id: Int, onBack: () -> Unit) {
-    val existing = remember { NoteRepository.getById(id) }
+fun EditNoteScreen(
+    noteId: Int,       // ✅ ganti id → noteId
+    onBack: () -> Unit
+) {
+    val existing = remember { NoteRepository.getById(noteId) }
     var title by remember { mutableStateOf(existing?.title ?: "") }
     var content by remember { mutableStateOf(existing?.content ?: "") }
 
@@ -422,7 +436,7 @@ fun EditNoteScreen(id: Int, onBack: () -> Unit) {
             Button(
                 onClick = {
                     if (title.isNotBlank()) {
-                        NoteRepository.update(id, title.trim(), content.trim())
+                        NoteRepository.update(noteId, title.trim(), content.trim())
                         onBack()
                     }
                 },

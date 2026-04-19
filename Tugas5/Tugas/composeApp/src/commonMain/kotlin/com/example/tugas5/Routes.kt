@@ -6,11 +6,11 @@ sealed class Screen(val route: String) {
     object Profile   : Screen("profile")
     object AddNote   : Screen("add_note")
 
-    object Detail : Screen("detail/{id}") {
-        fun createRoute(id: Int) = "detail/$id"
+    object Detail : Screen("detail/{noteId}") {
+        fun createRoute(noteId: Int) = "detail/$noteId"
     }
 
-    object EditNote : Screen("edit/{id}") {
-        fun createRoute(id: Int) = "edit/$id"
+    object EditNote : Screen("edit/{noteId}") {
+        fun createRoute(noteId: Int) = "edit/$noteId"
     }
 }
