@@ -119,7 +119,7 @@ Catatan dapat ditandai sebagai favorit ❤️ dari halaman Detail. Halaman Favor
 | Compose Multiplatform | UI toolkit |
 | Navigation Compose KMP | `org.jetbrains.androidx.navigation:navigation-compose:2.9.2` |
 | Material Icons Extended | Icon pack |
-| Material3 | Design system |
+
 
 ---
 
