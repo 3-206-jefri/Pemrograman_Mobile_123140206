@@ -90,19 +90,18 @@ Catatan dapat ditandai sebagai favorit ❤️ dari halaman Detail. Halaman Favor
 
 ## 📸 Screenshot
 
-> *Tambahkan screenshot setiap screen di sini*
 
 | Notes Screen | Detail Screen |
 |---|---|
-| ![img.png](NotePage.png) | ![Detail](screenshots/detail.png) |
+| ![img.png](NotePage.png) | ![img.png](DetailNote.png) |
 
 | Add Note Screen | Edit Note Screen |
 |---|---|
-| ![Add](screenshots/add.png) | ![Edit](screenshots/edit.png) |
+| !![img.png](AddNote.png) | ![img.png](EditNote.png)|
 
 | Favorites Screen | Profile Screen |
 |---|---|
-| ![Favorites](screenshots/favorites.png) | ![Profile](screenshots/profile.png) |
+| ![img.png](Favorite.png) | !![img.png](Profile.png)) |
 
 ---
 
