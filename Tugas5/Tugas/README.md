@@ -107,7 +107,7 @@ Catatan dapat ditandai sebagai favorit ❤️ dari halaman Detail. Halaman Favor
 
 ## 🎥 Video Demo
 
-[Demo.mkv](Demo.mkv)
+https://drive.google.com/file/d/1riQLMwBXcvJ4f1ajylGuhRD8Nk3TPGXX/view?usp=sharing
 
 ---
 
