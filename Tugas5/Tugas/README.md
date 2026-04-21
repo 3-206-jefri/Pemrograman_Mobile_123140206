@@ -107,7 +107,7 @@ Catatan dapat ditandai sebagai favorit ❤️ dari halaman Detail. Halaman Favor
 
 ## 🎥 Video Demo
 
-> *Tambahkan link video demo 30 detik di sini*
+[Demo.mkv](Demo.mkv)
 
 ---
 
@@ -135,5 +135,6 @@ commonMain.dependencies {
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
     implementation(compose.materialIconsExtended)
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }
 ```
