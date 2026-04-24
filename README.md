@@ -18,6 +18,9 @@ Setiap tugas dikelola dalam direktori tersendiri untuk mempermudah navigasi. Sil
 | [**Tugas 2**](./Tugas2/) | News App  | ✅ Selesai |
 | [**Tugas 3**](./Tugas3/) | My Profile App | ✅ Selesai |
 | [**Tugas 4**](./Tugas4/) | Implementasi MVVM Pattern | ✅ Selesai |
+| [**Tugas 5**](./Tugas5/) | Navigasi Antar Layer| ✅ Selesai |
+| [**Tugas 6**](./Tugas6/) | Networking and Rest API| ✅ Selesai |
+
 
 ---
 
