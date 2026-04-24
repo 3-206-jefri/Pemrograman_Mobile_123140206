@@ -1,4 +1,4 @@
-# News Reader App
+# Networking And Rest API
 
 Aplikasi android yang menampilkan daftar artikel
 dari public API atau API gratis.
