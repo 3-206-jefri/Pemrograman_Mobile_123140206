@@ -1,0 +1,57 @@
+-- Schema: Tabel Note
+CREATE TABLE NoteEntity (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    title       TEXT    NOT NULL,
+    content     TEXT    NOT NULL,
+    isFavorite  INTEGER NOT NULL DEFAULT 0,
+    createdAt   INTEGER NOT NULL,
+    updatedAt   INTEGER NOT NULL
+);
+
+-- Ambil semua catatan (urut terbaru)
+selectAll:
+SELECT * FROM NoteEntity ORDER BY updatedAt DESC;
+
+-- Ambil catatan favorit saja
+selectFavorites:
+SELECT * FROM NoteEntity WHERE isFavorite = 1 ORDER BY updatedAt DESC;
+
+-- Ambil catatan berdasarkan ID
+selectById:
+SELECT * FROM NoteEntity WHERE id = ?;
+
+-- Cari catatan berdasarkan judul atau isi
+search:
+SELECT * FROM NoteEntity
+WHERE title LIKE '%' || ? || '%'
+   OR content LIKE '%' || ? || '%'
+ORDER BY updatedAt DESC;
+
+-- Tambah catatan baru
+insert:
+INSERT INTO NoteEntity(title, content, isFavorite, createdAt, updatedAt)
+VALUES (?, ?, 0, ?, ?);
+
+-- Update judul & isi catatan
+update:
+UPDATE NoteEntity
+SET title = ?, content = ?, updatedAt = ?
+WHERE id = ?;
+
+-- Toggle favorit
+toggleFavorite:
+UPDATE NoteEntity
+SET isFavorite = CASE WHEN isFavorite = 1 THEN 0 ELSE 1 END
+WHERE id = ?;
+
+-- Hapus catatan
+delete:
+DELETE FROM NoteEntity WHERE id = ?;
+
+-- Hitung total catatan
+countAll:
+SELECT COUNT(*) FROM NoteEntity;
+
+-- Hitung total favorit
+countFavorites:
+SELECT COUNT(*) FROM NoteEntity WHERE isFavorite = 1;
