@@ -1,4 +1,4 @@
-package com.example.tugas5
+package com.example.tugas7
 
 class Greeting {
     private val platform = getPlatform()

@@ -1,4 +1,4 @@
-package com.example.tugas5
+package com.example.tugas7
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

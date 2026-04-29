@@ -1,4 +1,4 @@
-package com.example.tugas5
+package com.example.tugas7
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
