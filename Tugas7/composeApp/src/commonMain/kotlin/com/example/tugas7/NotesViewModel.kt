@@ -63,9 +63,8 @@ class NotesViewModel(
     fun toggleFavorite(id: Long) {
         viewModelScope.launch { repository.toggleFavorite(id) }
     }
-}
 
-// Extension: delegate sort order change ke settings
-fun onSortOrderChange(order: String) {
-    viewModelScope.launch { settingsManager.setSortOrder(order) }
+    fun onSortOrderChange(order: String) {
+        viewModelScope.launch { settingsManager.setSortOrder(order) }
+    }
 }

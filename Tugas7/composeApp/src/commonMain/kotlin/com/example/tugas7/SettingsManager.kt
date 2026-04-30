@@ -1,17 +1,18 @@
 package com.example.tugas7
 
-import com.russhwolf.settings.Settings
+import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.coroutines.FlowSettings
 import com.russhwolf.settings.coroutines.toFlowSettings
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
 /**
  * SettingsManager – mengelola preferensi pengguna dengan multiplatform-settings.
  * Di Android data disimpan di SharedPreferences, di iOS di NSUserDefaults.
  */
-class SettingsManager(settings: Settings) {
+class SettingsManager(settings: ObservableSettings) {
 
-    private val flowSettings: FlowSettings = settings.toFlowSettings()
+    private val flowSettings: FlowSettings = settings.toFlowSettings(Dispatchers.Main)
 
     companion object {
         const val KEY_THEME      = "app_theme"       // "light" | "dark" | "system"

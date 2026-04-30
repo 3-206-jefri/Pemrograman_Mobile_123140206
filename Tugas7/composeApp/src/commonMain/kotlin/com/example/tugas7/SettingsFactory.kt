@@ -1,5 +1,5 @@
 package com.example.tugas7
 
-import com.russhwolf.settings.Settings
+import com.russhwolf.settings.ObservableSettings
 
-expect fun createSettings(): Settings
+expect fun createSettings(): ObservableSettings
