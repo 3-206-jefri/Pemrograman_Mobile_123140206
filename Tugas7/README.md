@@ -106,7 +106,7 @@ kotlinx-datetime
 
 | Notes List | Search | Favorites | Settings |
 |---|---|---|---|
-| ![img.png](NoteList.png) | ![img.png](FavoriteGweh.png) |![img.png](Favorite Page.png) |![img.png](SettingsPage.png)  |
+| ![img.png](NoteList.png) | ![img.png](FavoriteGweh.png) |![img.png](FavoritePage.png) |![img.png](SettingsPage.png)  |
 
 ---
 
