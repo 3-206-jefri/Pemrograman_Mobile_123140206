@@ -1,9 +1,4 @@
 # 📝 Notes App – Tugas 7: Local Data Storage
-
-**Mata Kuliah:** Pengembangan Aplikasi Mobile  
-**Program Studi:** Teknik Informatika – ITERA  
-**NIM:** 123140206
-
 ---
 
 ## 🎯 Fitur yang Diimplementasikan
@@ -86,7 +81,7 @@ Data Sources:
 
 ---
 
-## 📦 Dependencies Baru (vs Tugas 6)
+## 📦 Dependencies Baru (vs Tugas 5)
 
 ```toml
 # SQLDelight 2.0.2
@@ -121,7 +116,3 @@ kotlinx-datetime
 
 ---
 
-## 🔗 GitHub
-
-Branch: `week-7`  
-Repo: [Pemrograman_Mobile_123140206](https://github.com/3-206-jefri/Pemrograman_Mobile_123140206)
