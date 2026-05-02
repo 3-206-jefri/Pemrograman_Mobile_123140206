@@ -102,7 +102,6 @@ kotlinx-datetime
 
 ## 📱 Screenshots
 
-> _(Tambahkan screenshot setelah menjalankan app di emulator)_
 
 | Notes List | Search | Favorites | Settings |
 |---|---|---|---|
@@ -112,7 +111,7 @@ kotlinx-datetime
 
 ## 🎥 Video Demo
 
-> _(Link video 45 detik menunjukkan: CRUD, search, settings, dan offline mode)_
+> _(https://drive.google.com/file/d/1l1cXXMzvGZEc3_Qgn77Rm_JmHM9tHkET/view?usp=sharing)_
 
 ---
 
