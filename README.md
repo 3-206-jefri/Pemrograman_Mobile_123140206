@@ -21,6 +21,7 @@ Setiap tugas dikelola dalam direktori tersendiri untuk mempermudah navigasi. Sil
 | [**Tugas 5**](./Tugas5/) | Navigasi Antar Layer| ✅ Selesai |
 | [**Tugas 6**](./Tugas6/) | Networking and Rest API| ✅ Selesai |
 | [**Tugas 7**](./Tugas7/) | Local Data Strorage | ✅ Selesai |
+| [**Tugas 8**](./Tugas8/) | Platform Specific Feature | ✅ Selesai |
 
 
 ---
