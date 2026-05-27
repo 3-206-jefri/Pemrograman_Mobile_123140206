@@ -1,10 +1,10 @@
-package com.example.tugas9.ui.settings
+package com.example.tugas9.ui.screens.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tugas9.AppDependencies
-import com.example.tugas9.NoteRepository
-import com.example.tugas9.ui.settings.SettingsManager
+import com.example.tugas9.di.AppDependencies
+import com.example.tugas9.data.repository.NoteRepository
+import com.example.tugas9.data.local.SettingsManager
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn

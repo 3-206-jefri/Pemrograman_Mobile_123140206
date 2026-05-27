@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.data.local
 
 import android.content.Context
 import com.russhwolf.settings.ObservableSettings

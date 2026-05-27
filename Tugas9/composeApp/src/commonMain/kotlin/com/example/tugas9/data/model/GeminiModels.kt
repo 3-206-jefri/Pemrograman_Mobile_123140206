@@ -1,4 +1,4 @@
-package com.example.tugas9.Gemini.model
+package com.example.tugas9.data.model
 
 import kotlinx.serialization.Serializable
 

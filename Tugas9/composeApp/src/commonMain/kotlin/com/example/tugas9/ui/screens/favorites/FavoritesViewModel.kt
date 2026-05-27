@@ -1,11 +1,11 @@
-package com.example.tugas9.ui.favorites
+package com.example.tugas9.ui.screens.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tugas9.AppDependencies
-import com.example.tugas9.Note
-import com.example.tugas9.NoteRepository
-import com.example.tugas9.NotesUiState
+import com.example.tugas9.di.AppDependencies
+import com.example.tugas9.data.model.Note
+import com.example.tugas9.data.repository.NoteRepository
+import com.example.tugas9.ui.screens.notes.NotesUiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

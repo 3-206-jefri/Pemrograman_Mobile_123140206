@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically

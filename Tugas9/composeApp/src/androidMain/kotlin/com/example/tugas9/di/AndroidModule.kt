@@ -1,8 +1,7 @@
 package com.example.tugas9.di
 
-import com.example.tugas9.DatabaseDriverFactory
-import com.example.tugas9.NoteRepository
-import org.koin.android.ext.koin.androidContext
+import com.example.tugas9.data.local.DatabaseDriverFactory
+import com.example.tugas9.data.repository.NoteRepository
 import org.koin.dsl.module
 
 /**

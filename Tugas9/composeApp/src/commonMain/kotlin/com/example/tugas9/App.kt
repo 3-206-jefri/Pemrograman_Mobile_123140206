@@ -7,7 +7,7 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tugas9.ui.MainScreen
-import com.example.tugas9.ui.settings.SettingsViewModel
+import com.example.tugas9.ui.screens.settings.SettingsViewModel
 
 @Composable
 fun App() {

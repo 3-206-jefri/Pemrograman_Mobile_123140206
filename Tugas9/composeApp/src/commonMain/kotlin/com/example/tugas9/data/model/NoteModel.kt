@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.data.model
 
 // Domain model Note (dipakai di seluruh UI)
 data class Note(

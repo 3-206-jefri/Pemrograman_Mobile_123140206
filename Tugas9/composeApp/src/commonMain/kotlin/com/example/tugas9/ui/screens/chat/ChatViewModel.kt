@@ -1,8 +1,8 @@
-package com.example.tugas9.ui.gemini
+package com.example.tugas9.ui.screens.chat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tugas9.Gemini.Repository.AiRepository
+import com.example.tugas9.data.repository.AiRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

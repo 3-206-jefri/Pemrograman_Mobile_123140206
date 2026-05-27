@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.platform
 
 interface Platform {
     val name: String

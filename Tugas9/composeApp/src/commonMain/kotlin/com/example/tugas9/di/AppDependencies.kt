@@ -1,6 +1,7 @@
-package com.example.tugas9
+package com.example.tugas9.di
 
-import com.example.tugas9.ui.settings.SettingsManager
+import com.example.tugas9.data.repository.NoteRepository
+import com.example.tugas9.data.local.SettingsManager
 
 /**
  * Singleton sederhana untuk menyimpan dependensi global.

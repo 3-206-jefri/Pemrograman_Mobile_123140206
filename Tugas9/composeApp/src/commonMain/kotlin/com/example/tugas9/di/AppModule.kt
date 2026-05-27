@@ -1,7 +1,7 @@
 package com.example.tugas9.di
 
-import com.example.tugas9.ui.settings.SettingsManager
-import com.example.tugas9.ui.settings.createSettings
+import com.example.tugas9.data.local.SettingsManager
+import com.example.tugas9.data.local.createSettings
 import com.example.tugas9.platform.BatteryInfo
 import com.example.tugas9.platform.DeviceInfo
 import com.example.tugas9.platform.NetworkMonitor

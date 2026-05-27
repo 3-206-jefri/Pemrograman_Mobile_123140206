@@ -1,6 +1,11 @@
-package com.example.tugas9.Gemini.Repository
+package com.example.tugas9.data.repository
 
 import com.example.tugas9.Gemini.model.*
+import com.example.tugas9.data.model.Content
+import com.example.tugas9.data.model.GeminiRequest
+import com.example.tugas9.data.model.GeminiResponse
+import com.example.tugas9.data.model.Part
+import com.example.tugas9.data.model.SystemInstruction
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -16,9 +21,11 @@ class AiRepository(private val client: HttpClient) {
         return try {
             // PROMPT ENGINEERING (Bobot 25%)
             // Menggabungkan konteks catatan user agar AI bisa menjawab berdasarkan notes tersebut
-            val systemPrompt = Part("Anda adalah asisten cerdas untuk aplikasi catatan. " +
-                    "Gunakan konteks catatan berikut untuk membantu pengguna: $notesContext. " +
-                    "Jawablah dengan sopan, ringkas, dan jelas.")
+            val systemPrompt = Part(
+                "Anda adalah asisten cerdas untuk aplikasi catatan. " +
+                        "Gunakan konteks catatan berikut untuk membantu pengguna: $notesContext. " +
+                        "Jawablah dengan sopan, ringkas, dan jelas."
+            )
 
             val requestBody = GeminiRequest(
                 system_instruction = SystemInstruction(listOf(systemPrompt)),

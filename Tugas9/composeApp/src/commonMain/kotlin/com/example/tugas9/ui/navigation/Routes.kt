@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.ui.navigation
 
 sealed class Screen(val route: String) {
     object Notes     : Screen("notes")

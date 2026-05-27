@@ -1,9 +1,11 @@
-package com.example.tugas9
+package com.example.tugas9.data.repository
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
-import com.example.tugas9.db.NotesDatabase
+import com.example.tugas9.data.model.Note
 import com.example.tugas9.db.NoteEntity
+import com.example.tugas9.db.NotesDatabase
+import com.example.tugas9.data.local.DatabaseDriverFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -12,7 +14,7 @@ import kotlinx.datetime.Clock
 
 class NoteRepository(driverFactory: DatabaseDriverFactory) {
 
-    private val database = NotesDatabase(driverFactory.createDriver())
+    private val database = NotesDatabase.Companion(driverFactory.createDriver())
     private val queries = database.noteQueries
 
     // ── Helpers ──────────────────────────────────────────────────────────────

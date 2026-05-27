@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.tugas9.ui.settings.SettingsManager
+import com.example.tugas9.data.repository.NoteRepository
+import com.example.tugas9.di.AppDependencies
+import com.example.tugas9.data.local.SettingsManager
 import org.koin.android.ext.android.inject
 
 /**

@@ -19,17 +19,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
-import com.example.tugas9.AppDependencies
-import com.example.tugas9.BottomNav
-import com.example.tugas9.NetworkStatusIndicator
-import com.example.tugas9.Note
-import com.example.tugas9.NotesUiState
-import com.example.tugas9.NotesViewModel
-import com.example.tugas9.Screen
+import com.example.tugas9.di.AppDependencies
+import com.example.tugas9.ui.navigation.BottomNav
+import com.example.tugas9.ui.components.NetworkStatusIndicator
+import com.example.tugas9.data.model.Note
+import com.example.tugas9.ui.screens.notes.NotesUiState
+import com.example.tugas9.ui.screens.notes.NotesViewModel
+import com.example.tugas9.ui.navigation.Screen
 import com.example.tugas9.platform.BatteryInfo
 import com.example.tugas9.platform.DeviceInfo
-import com.example.tugas9.ui.favorites.FavoritesViewModel
-import com.example.tugas9.ui.settings.SettingsViewModel
+import com.example.tugas9.ui.screens.favorites.FavoritesViewModel
+import com.example.tugas9.ui.screens.settings.SettingsViewModel
 import org.koin.compose.koinInject
 
 /* ──────────────────────────────────────────────

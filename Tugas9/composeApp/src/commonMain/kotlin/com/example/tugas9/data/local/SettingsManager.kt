@@ -1,4 +1,4 @@
-package com.example.tugas9.ui.settings
+package com.example.tugas9.data.local
 
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.coroutines.FlowSettings

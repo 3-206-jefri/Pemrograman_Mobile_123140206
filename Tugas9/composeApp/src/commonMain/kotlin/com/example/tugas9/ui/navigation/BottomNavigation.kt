@@ -1,4 +1,4 @@
-package com.example.tugas9
+package com.example.tugas9.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite

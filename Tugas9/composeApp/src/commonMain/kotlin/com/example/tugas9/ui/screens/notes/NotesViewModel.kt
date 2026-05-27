@@ -1,8 +1,11 @@
-package com.example.tugas9
+package com.example.tugas9.ui.screens.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tugas9.ui.settings.SettingsManager
+import com.example.tugas9.data.repository.NoteRepository
+import com.example.tugas9.data.model.Note
+import com.example.tugas9.di.AppDependencies
+import com.example.tugas9.data.local.SettingsManager
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
