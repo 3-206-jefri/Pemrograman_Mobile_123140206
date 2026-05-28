@@ -1,10 +1,12 @@
 package com.example.tugas9.di
 
+import android.net.http.HttpResponseCache.install
 import com.example.tugas9.data.local.SettingsManager
 import com.example.tugas9.data.local.createSettings
 import com.example.tugas9.platform.BatteryInfo
 import com.example.tugas9.platform.DeviceInfo
 import com.example.tugas9.platform.NetworkMonitor
+import io.ktor.client.HttpClient
 import org.koin.dsl.module
 
 /**
@@ -15,6 +17,18 @@ import org.koin.dsl.module
  * factory{}    = Instance baru setiap kali dipanggil
  */
 val appModule = module {
+    single {
+        HttpClient {
+            install(ContentNegotiation) {
+                json(Json {
+                    ignoreUnknownKeys = true
+                    prettyPrint = true
+                    isLenient = true
+                })
+            }
+        }
+    }
+
 
     // ── Settings ──────────────────────────────────────────────────────────────
     single { createSettings() }
