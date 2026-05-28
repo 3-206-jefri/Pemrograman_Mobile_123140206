@@ -5,6 +5,7 @@ sealed class Screen(val route: String) {
     object Favorites : Screen("favorites")
     object Profile   : Screen("profile")
     object AddNote   : Screen("add_note")
+    object Chat      : Screen("chat")
 
     object Detail : Screen("detail/{noteId}") {
         fun createRoute(noteId: Long) = "detail/$noteId"

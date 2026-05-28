@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties // ✨ Import untuk membaca local.properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -7,12 +8,15 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.sqldelight)
     alias(libs.plugins.kotlinSerialization)
+    id("com.codingfeline.buildkonfig") version "0.15.1"
 }
 
 kotlin {
     androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
         }
     }
 
@@ -101,4 +105,26 @@ sqldelight {
 
 dependencies {
     debugImplementation(libs.compose.uiTooling)
+}
+
+
+buildkonfig {
+    packageName = "com.example.tugas9"
+
+    val properties = Properties()
+
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        properties.load(localPropertiesFile.inputStream())
+    }
+
+    defaultConfigs {
+
+        val apiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
+        buildConfigField(
+            com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING,
+            "GEMINI_API_KEY",
+            apiKey
+        )
+    }
 }

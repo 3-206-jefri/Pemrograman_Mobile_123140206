@@ -1,5 +1,6 @@
 package com.example.tugas9.data.repository
 
+import com.example.tugas9.BuildKonfig
 import com.example.tugas9.data.model.Content
 import com.example.tugas9.data.model.GeminiRequest
 import com.example.tugas9.data.model.GeminiResponse
@@ -13,8 +14,8 @@ import io.ktor.http.*
 class AiRepository(private val client: HttpClient) {
 
     // Ganti dengan API Key Anda dari Google AI Studio
-    private val apiKey = "YOUR_GEMINI_API_KEY_HERE"
-    private val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey"
+    private val apiKey = BuildKonfig.GEMINI_API_KEY
+    private val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
 
     suspend fun askChatbot(userMessage: String, notesContext: String = ""): Result<String> {
         return try {
@@ -49,7 +50,6 @@ class AiRepository(private val client: HttpClient) {
                 Result.failure(Exception(errorResponse.error?.message ?: "Gagal menghubungi AI"))
             }
         } catch (e: Exception) {
-            // ERROR HANDLING (Bobot 20%)
             Result.failure(e)
         }
     }
