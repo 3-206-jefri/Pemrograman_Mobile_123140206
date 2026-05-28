@@ -1,12 +1,15 @@
 package com.example.tugas9.di
 
-import android.net.http.HttpResponseCache.install
 import com.example.tugas9.data.local.SettingsManager
 import com.example.tugas9.data.local.createSettings
+import com.example.tugas9.data.repository.AiRepository
 import com.example.tugas9.platform.BatteryInfo
 import com.example.tugas9.platform.DeviceInfo
 import com.example.tugas9.platform.NetworkMonitor
-import io.ktor.client.HttpClient
+import io.ktor.client.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
 /**
@@ -29,19 +32,15 @@ val appModule = module {
         }
     }
 
+    // ── AI Repository ──────────────────────────────────────────────────────────
+    single { AiRepository(get()) }
 
     // ── Settings ──────────────────────────────────────────────────────────────
     single { createSettings() }
     single { SettingsManager(get()) }
 
-    // ── Repository ────────────────────────────────────────────────────────────
-    // NoteRepository sudah ada dari Tugas 7, sekarang di-inject via Koin
-    // DatabaseDriverFactory di-inject dari androidModule (butuh Context)
-
     // ── Platform Services ─────────────────────────────────────────────────────
     single { DeviceInfo() }
     single { NetworkMonitor() }
     single { BatteryInfo() }
-// Ubah menjadi seperti ini:
-
 }

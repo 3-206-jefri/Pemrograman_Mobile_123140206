@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -20,9 +21,11 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.sqldelight.android)
+            // Ktor engine for Android
+            implementation(libs.ktor.client.android)
             // Koin Android
-            implementation("io.insert-koin:koin-android:4.2.1")
-            implementation("io.insert-koin:koin-androidx-compose:4.2.1")
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -43,9 +46,16 @@ kotlin {
             implementation(libs.multiplatform.settings.coroutines)
             // DateTime
             implementation(libs.kotlinx.datetime)
+            // Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.logging)
+            // Kotlinx Serialization
+            implementation(libs.kotlinx.serialization.json)
             // Koin Core + Compose
-            implementation("io.insert-koin:koin-core:3.5.3")
-            implementation("io.insert-koin:koin-compose:1.1.2")
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
