@@ -22,6 +22,8 @@ Setiap tugas dikelola dalam direktori tersendiri untuk mempermudah navigasi. Sil
 | [**Tugas 6**](./Tugas6/) | Networking and Rest API| ✅ Selesai |
 | [**Tugas 7**](./Tugas7/) | Local Data Strorage | ✅ Selesai |
 | [**Tugas 8**](./Tugas8/) | Platform Specific Feature | ✅ Selesai |
+| [**Tugas 9**](./Tugas10/) | AI API Integration | ✅ Selesai |
+
 
 
 ---
