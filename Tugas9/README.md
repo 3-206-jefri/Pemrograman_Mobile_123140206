@@ -13,7 +13,7 @@ Aplikasi ini adalah proyek pengembangan Android/Kotlin Multiplatform (KMP) yang 
 - **Architecture:** MVVM (Model-View-ViewModel) & Clean Architecture
 - **Dependency Injection:** Koin
 - **Networking:** Ktor Client
-- **AI Service:** Google Gemini API (`gemini-1.5-flash` / `gemini-2.0-flash` / `gemini-3.1-flash-lite`)
+- **AI Service:** Google Gemini API ( `gemini-3.1-flash-lite` ke atas)
 - **Security:** BuildKonfig (untuk menyembunyikan API Key dari public repository)
 
 ---
