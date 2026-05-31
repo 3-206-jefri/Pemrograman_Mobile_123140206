@@ -26,6 +26,8 @@ class NotesViewModel(
     // Query pencarian
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
+    private val _selectedNote = MutableStateFlow<Note?>(null)
+    val selectedNote: StateFlow<Note?> = _selectedNote.asStateFlow()
 
     // Sort order dari settings
     val sortOrder: StateFlow<String> = settingsManager.sortOrderFlow
@@ -50,6 +52,13 @@ class NotesViewModel(
         .onStart { emit(NotesUiState.Loading) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), NotesUiState.Loading)
 
+    fun fetchNoteDetail(id: Long) {
+        viewModelScope.launch {
+            _selectedNote.value = repository.getNoteById(id)
+        }
+    }
+    fun clearSelectedNote() {
+        _selectedNote.value = null}
     fun onSearchQueryChange(query: String) { _searchQuery.value = query }
 
     fun addNote(title: String, content: String) {

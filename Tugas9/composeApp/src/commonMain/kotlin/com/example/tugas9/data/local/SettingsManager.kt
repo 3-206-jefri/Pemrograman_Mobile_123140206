@@ -1,5 +1,6 @@
 package com.example.tugas9.data.local
 
+import com.russhwolf.settings.ExperimentalSettingsApi
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.coroutines.FlowSettings
 import com.russhwolf.settings.coroutines.toFlowSettings
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
  * SettingsManager – mengelola preferensi pengguna dengan multiplatform-settings.
  * Di Android data disimpan di SharedPreferences, di iOS di NSUserDefaults.
  */
+@OptIn(ExperimentalSettingsApi::class)
 class SettingsManager(settings: ObservableSettings) {
 
     private val flowSettings: FlowSettings = settings.toFlowSettings(Dispatchers.Main)

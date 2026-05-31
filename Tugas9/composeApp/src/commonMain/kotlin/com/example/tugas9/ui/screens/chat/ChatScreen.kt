@@ -2,10 +2,11 @@ package com.example.tugas9.ui.screens.chat
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,14 +22,14 @@ import com.example.tugas9.ui.screens.notes.NotesViewModel
 @Composable
 fun ChatScreen(
     chatVm: ChatViewModel,
-    notesVm: NotesViewModel // Kita butuh ini untuk mengambil data notes user
+    notesVm: NotesViewModel
 ) {
-    val chatState by chatVm.chatState.collectAsStateWithLifecycle()
+    val messages by chatVm.messages.collectAsStateWithLifecycle()
+    val isLoading by chatVm.isLoading.collectAsStateWithLifecycle()
     val notesUiState by notesVm.uiState.collectAsStateWithLifecycle()
 
     var inputText by remember { mutableStateOf("") }
 
-    // Mengubah daftar catatan yang ada menjadi satu String panjang untuk konteks AI
     val notesContext = remember(notesUiState) {
         if (notesUiState is NotesUiState.Success) {
             val notesList = (notesUiState as NotesUiState.Success).notes
@@ -39,56 +40,48 @@ fun ChatScreen(
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("🤖 AI Assistant") }) }
+        topBar = {
+            TopAppBar(
+                title = { Text("Asisten AI") },
+                navigationIcon = {
+                    Icon(
+                        imageVector = Icons.Default.AutoAwesome,
+                        contentDescription = "AI",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+            )
+        }
     ) { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
+                .background(MaterialTheme.colorScheme.surface)
         ) {
-            // Area Konten / Jawaban
-            Box(
+            // ── Area Daftar Pesan (Chat Bubbles) ──
+            LazyColumn(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .padding(16.dp)
-                    .verticalScroll(rememberScrollState()),
-                contentAlignment = Alignment.TopCenter
+                    .padding(horizontal = 16.dp),
+                reverseLayout = false
             ) {
-                when (val state = chatState) {
-                    is ChatState.Idle -> {
-                        Text(
-                            "Halo! Saya asisten AI. Ada yang bisa saya bantu terkait catatanmu?",
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    is ChatState.Loading -> {
-                        CircularProgressIndicator(modifier = Modifier.padding(top = 32.dp))
-                    }
-                    is ChatState.Success -> {
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(MaterialTheme.colorScheme.primaryContainer)
-                                .padding(16.dp)
-                                .fillMaxWidth()
-                        ) {
-                            Text(
-                                text = state.message,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
+                items(messages) { msg ->
+                    ChatBubble(message = msg)
+                }
+
+                if (isLoading) {
+                    item {
+                        Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp), contentAlignment = Alignment.CenterStart) {
+                            CircularProgressIndicator(modifier = Modifier.size(24.dp))
                         }
-                    }
-                    is ChatState.Error -> {
-                        Text(
-                            text = "Error: ${state.error}",
-                            color = MaterialTheme.colorScheme.error
-                        )
                     }
                 }
             }
 
-            // Area Input Pesan
+            // ── Area Input Teks ──
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -99,21 +92,20 @@ fun ChatScreen(
                     value = inputText,
                     onValueChange = { inputText = it },
                     modifier = Modifier.weight(1f),
-                    placeholder = { Text("Tanya ke AI...") },
+                    placeholder = { Text("Ketik pesan...") },
                     shape = RoundedCornerShape(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 IconButton(
                     onClick = {
-                        // Kirim pesan ke ViewModel beserta konteks catatannya
                         chatVm.sendMessage(message = inputText, notesData = notesContext)
-                        inputText = "" // Kosongkan textfield setelah kirim
+                        inputText = ""
                     },
                     modifier = Modifier.background(
                         MaterialTheme.colorScheme.primary,
                         shape = RoundedCornerShape(24.dp)
                     ),
-                    enabled = inputText.isNotBlank() && chatState !is ChatState.Loading
+                    enabled = inputText.isNotBlank() && !isLoading
                 ) {
                     Icon(
                         Icons.Default.Send,
@@ -123,5 +115,33 @@ fun ChatScreen(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ChatBubble(message: ChatMessage) {
+    val alignment = if (message.isUser) Alignment.CenterEnd else Alignment.CenterStart
+    val bgColor = if (message.isUser) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant
+    val textColor = if (message.isUser) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
+    val shape = if (message.isUser) {
+        RoundedCornerShape(16.dp, 16.dp, 4.dp, 16.dp) // Sudut lancip di kanan bawah
+    } else {
+        RoundedCornerShape(16.dp, 16.dp, 16.dp, 4.dp) // Sudut lancip di kiri bawah
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        contentAlignment = alignment
+    ) {
+        Text(
+            text = message.text,
+            color = textColor,
+            modifier = Modifier
+                .clip(shape)
+                .background(bgColor)
+                .padding(horizontal = 16.dp, vertical = 10.dp)
+        )
     }
 }

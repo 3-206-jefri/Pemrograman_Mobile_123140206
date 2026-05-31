@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties // ✨ Import untuk membaca local.properties
 
 plugins {
@@ -19,6 +18,14 @@ kotlin {
             }
         }
     }
+    targets.all {
+        compilations.all {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
+        }
+    }
+
 
     sourceSets {
         androidMain.dependencies {

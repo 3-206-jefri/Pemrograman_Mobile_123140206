@@ -15,9 +15,9 @@ class AiRepository(private val client: HttpClient) {
 
     // Ganti dengan API Key Anda dari Google AI Studio
     private val apiKey = BuildKonfig.GEMINI_API_KEY
-    private val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
+    private val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=$apiKey"
 
-    suspend fun askChatbot(userMessage: String, notesContext: String = ""): Result<String> {
+    suspend fun askChatbot(chatHistory : List<Content>, notesContext: String = ""): Result<String> {
         return try {
             // PROMPT ENGINEERING (Bobot 25%)
             // Menggabungkan konteks catatan user agar AI bisa menjawab berdasarkan notes tersebut
@@ -29,10 +29,9 @@ class AiRepository(private val client: HttpClient) {
 
             val requestBody = GeminiRequest(
                 system_instruction = SystemInstruction(listOf(systemPrompt)),
-                contents = listOf(
-                    Content(role = "user", parts = listOf(Part(userMessage)))
+                contents = chatHistory
                 )
-            )
+
 
             val response = client.post(url) {
                 contentType(ContentType.Application.Json)

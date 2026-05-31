@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tugas9.data.model.Note
+import androidx.compose.material.icons.filled.AutoAwesome
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +36,10 @@ fun NotesScreen(
                     title = { Text("📝 Notes") },
                     actions = {
                         IconButton(onClick = onChatClick) {
-                            Icon(Icons.Default.Chat, "Chat")
+                            Icon(
+                                Icons.Default.AutoAwesome,
+                                "Gemini AI",
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                         // Sort menu
                         Box {
