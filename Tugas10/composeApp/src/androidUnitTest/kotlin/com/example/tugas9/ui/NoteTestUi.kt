@@ -8,19 +8,27 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.tugas9.ui.screens.TestTags
+import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.stopKoin
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-// Penanda wajib bahwa ini dijalankan di Emulator Android asli
-@RunWith(AndroidJUnit4::class)
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [33])
 class NotesUiTest {
 
-    // Rule wajib untuk merender UI Jetpack Compose
     @get:Rule
     val composeTestRule = createComposeRule()
+
+    // ✨ TAMBAHAN WAJIB: Mematikan mesin Koin setelah setiap 1 tes selesai
+    @After
+    fun tearDown() {
+        stopKoin()
+    }
 
     @Test
     fun uiTest1_EmptyStateIsDisplayed() {

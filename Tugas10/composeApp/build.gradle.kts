@@ -70,17 +70,28 @@ kotlin {
                 implementation("app.cash.turbine:turbine:1.0.0")
                 implementation("io.mockk:mockk:1.13.9")
                 implementation("io.insert-koin:koin-test:3.5.3")
+
+                // ✨ TAMBAHAN UNTUK ROBOLECTRIC (UI TEST TANPA HP/EMULATOR) ✨
+                implementation("org.robolectric:robolectric:4.11.1")
+                implementation("androidx.compose.ui:ui-test-junit4:1.6.1")
+                implementation("androidx.compose.ui:ui-test-manifest:1.6.1")
+                implementation("androidx.test.ext:junit:1.1.5")
             }
         }
-        val androidInstrumentedTest by getting {
-            // Sengaja kita kosongkan, karena Android Studio lebih mudah membaca blok bawah
-        }
+
     }
 }
 
 android {
     namespace = "com.example.tugas9"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+
+    // ✨ INI YANG TERLEWAT: Menyuruh Gradle memberikan Manifest ke Robolectric ✨
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 
     defaultConfig {
         applicationId = "com.example.tugas9"
