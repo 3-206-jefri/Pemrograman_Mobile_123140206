@@ -43,7 +43,9 @@ class NotesViewModelTest {
         settingsManager = mockk(relaxed = true)
 
         // Mengatur respons default dari tiruan
-        val dummyNotes = listOf(Note(1, "Test Judul", "Test Isi", 123L, 123L, false))
+        // Memperbaiki urutan argumen Note sesuai dengan NoteModel.kt:
+        // id, title, content, isFavorite, createdAt, updatedAt
+        val dummyNotes = listOf(Note(1, "Test Judul", "Test Isi", false, 123L, 123L))
         every { repository.getAllNotes() } returns flowOf(dummyNotes)
         every { settingsManager.sortOrderFlow } returns MutableStateFlow("newest")
 

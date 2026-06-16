@@ -26,15 +26,12 @@ kotlin {
         }
     }
 
-
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.sqldelight.android)
-            // Ktor engine for Android
             implementation(libs.ktor.client.android)
-            // Koin Android
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
         }
@@ -49,41 +46,37 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
             implementation(compose.materialIconsExtended)
-            // SQLDelight
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines)
-            // Multiplatform Settings
             implementation(libs.multiplatform.settings)
             implementation(libs.multiplatform.settings.coroutines)
-            // DateTime
             implementation(libs.kotlinx.datetime)
-            // Ktor
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
-            // Kotlinx Serialization
             implementation(libs.kotlinx.serialization.json)
-            // Koin Core + Compose
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation(libs.kotlin.coroutines.test)
-            implementation(libs.turbine)
-            implementation(libs.mockk)
-            implementation(libs.koin.test)
+        }
+
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+                implementation("app.cash.turbine:turbine:1.0.0")
+                implementation("io.mockk:mockk:1.13.9")
+                implementation("io.insert-koin:koin-test:3.5.3")
+            }
         }
         val androidInstrumentedTest by getting {
-            dependencies {
-                implementation("androidx.compose.ui:ui-test-junit4:1.6.1")
-            }
-
+            // Sengaja kita kosongkan, karena Android Studio lebih mudah membaca blok bawah
         }
     }
 }
-
 
 android {
     namespace = "com.example.tugas9"
@@ -95,6 +88,9 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        // Supir penggerak tes di Emulator
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {
@@ -124,21 +120,28 @@ sqldelight {
 dependencies {
     debugImplementation(libs.compose.uiTooling)
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.1")
-}
 
+    // Library pengujian Compose UI
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.1")
+    androidTestImplementation("junit:junit:4.13.2")
+
+
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test:core:1.6.1")
+}
 
 buildkonfig {
     packageName = "com.example.tugas9"
 
     val properties = Properties()
-
     val localPropertiesFile = rootProject.file("local.properties")
     if (localPropertiesFile.exists()) {
         properties.load(localPropertiesFile.inputStream())
     }
 
     defaultConfigs {
-
         val apiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
         buildConfigField(
             com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING,
