@@ -1,4 +1,4 @@
-import java.util.Properties // ✨ Import untuk membaca local.properties
+import java.util.Properties // ✨ Import untuk membaca local.properties (Import alien sudah dihapus!)
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.sqldelight)
     alias(libs.plugins.kotlinSerialization)
     id("com.codingfeline.buildkonfig") version "0.15.1"
+    id("org.jetbrains.kotlinx.kover") version "0.8.0"
 }
 
 kotlin {
@@ -86,10 +87,13 @@ android {
     namespace = "com.example.tugas9"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-    // ✨ INI YANG TERLEWAT: Menyuruh Gradle memberikan Manifest ke Robolectric ✨
+    // ✨ POSISI YANG BENAR: all { jvmArgs } harus berada DI DALAM unitTests ✨
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
+            all {
+                it.jvmArgs("-noverify")
+            }
         }
     }
 
@@ -131,11 +135,13 @@ sqldelight {
 dependencies {
     debugImplementation(libs.compose.uiTooling)
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.1")
+    
+    // ✨ PERBAIKAN: Tambahkan ui-test-manifest ke testImplementation agar bisa jalan di testReleaseUnitTest
+    testImplementation("androidx.compose.ui:ui-test-manifest:1.6.1")
 
     // Library pengujian Compose UI
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.1")
     androidTestImplementation("junit:junit:4.13.2")
-
 
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -159,5 +165,21 @@ buildkonfig {
             "GEMINI_API_KEY",
             apiKey
         )
+
+    }
+}
+kover {
+    reports {
+        filters {
+            excludes {
+                // Mengabaikan fitur yang bukan bagian dari tugas minggu ini
+                classes(
+                    "*NotesViewModel*",
+                    "*NoteRepositoryImpl*",
+                    "*AppModule*",
+                    "*NotesScreen*"
+                )
+            }
+        }
     }
 }

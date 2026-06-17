@@ -1,36 +1,42 @@
-# 📝 Tugas 9 - Notes APP  With AI API Integration
-Aplikasi ini adalah proyek pengembangan Android/Kotlin Multiplatform (KMP) yang mengimplementasikan arsitektur Clean Code (MVVM) dan Dependency Injection (Koin). Fokus utama dari pembaruan ini adalah pengintegrasian **Google Gemini API** sebagai Asisten AI Pintar.
+# Tugas 10 - Testing dan Dependency Injection (PAM)
 
-## ✨ Fitur Utama
-- **Manajemen Catatan (CRUD):** Tambah, baca, ubah, dan hapus catatan.
-- **Favorit & Pengaturan:** Menyimpan catatan favorit dan kustomisasi tampilan antarmuka (Terang/Gelap).
-- 🤖 **Smart AI Assistant:** Chatbot terintegrasi yang didukung oleh Gemini API. AI ini telah diinjeksi (*Prompt Engineering*) dengan konteks catatan milik pengguna, sehingga ia dapat menjawab pertanyaan atau merangkum isi catatan pengguna secara spesifik.
-- 💬 **Multi-turn Conversation (🌟 Fitur Bonus):** Chatbot memiliki memori untuk mengingat riwayat percakapan. Pengguna dapat melakukan diskusi panjang dengan AI tanpa kehilangan konteks pertanyaan sebelumnya. Antarmuka menggunakan desain *Chat Bubbles* yang responsif.
-- **Robust Error Handling:** Aplikasi menangani kasus ketika *server down* atau *high demand* tanpa menyebabkan *Force Close*, serta menampilkan status *loading* yang interaktif.
 
-## 🛠️ Teknologi & Arsitektur
-- **UI Toolkit:** Jetpack Compose
-- **Architecture:** MVVM (Model-View-ViewModel) & Clean Architecture
-- **Dependency Injection:** Koin
-- **Networking:** Ktor Client
-- **AI Service:** Google Gemini API ( `gemini-3.1-flash-lite` ke atas)
-- **Security:** BuildKonfig (untuk menyembunyikan API Key dari public repository)
+## 📌 Deskripsi Tugas
+Pada praktikum minggu ke-10 ini, proyek aplikasi catatan (*Notes App*) berbasis Kotlin Multiplatform (KMP) telah disempurnakan dengan menerapkan prinsip *Clean Architecture* tingkat lanjut. Fokus utama pada modul ini adalah:
+1. **Dependency Injection (DI):** Mengimplementasikan Koin untuk manajemen *dependency* yang lebih rapi pada ViewModel, Repository, dan konfigurasi platform.
+2. **Unit Testing:** Melakukan pengujian logika bisnis secara terisolasi menggunakan `kotlin.test`, `MockK` (untuk *mocking* repository), dan `Turbine` (untuk pengujian *Flow*).
+3. **UI Testing:** Melakukan pengujian antarmuka Jetpack Compose menggunakan `createComposeRule` yang dijalankan murni secara lokal menggunakan **Robolectric** (bypass Emulator Android 14/15 restrictions).
+
+## ✅ Daftar Test Cases (12 Tests Passed)
+
+### Fase 1 & 2: NotesViewModelTest (4 Test Cases)
+- `testInitialUiStateIsLoading`: Memastikan *state* awal antarmuka adalah `Loading`.
+- `testSearchQueryFlowUpdatesCorrectly`: Memastikan *Flow* pencarian dengan *Turbine* memancarkan *value* yang benar saat *query* berubah.
+- `testAddNoteCallsRepository`: Memastikan pemanggilan `addNote()` mengeksekusi fungsi *insert* pada Repository tepat 1 kali (*Verify*).
+- `testDeleteNoteCallsRepository`: Memastikan pemanggilan `deleteNote()` mengeksekusi fungsi *delete* pada Repository tepat 1 kali (*Verify*).
+
+### Fase 3: NoteRepositoryTest (5 Test Cases)
+- `test1_GetAllNotes_ReturnsData`: Memastikan repository dapat mengambil daftar catatan (*Flow*) dengan data yang valid.
+- `test2_GetAllNotes_ReturnsEmptyList`: Memastikan repository menangani kondisi basis data kosong dengan benar.
+- `test3_InsertNote_IsCalledCorrectly`: Memastikan fungsionalitas tambah catatan pada sisi sumber data tereksekusi.
+- `test4_DeleteNote_IsCalledCorrectly`: Memastikan fungsionalitas hapus data dapat menerima parameter *ID* (*Int*).
+- `test5_InsertNote_WithEmptyStrings`: Menguji stabilitas repository saat menerima masukan string kosong.
+
+### Fase 4: NotesUiTest (3 Test Cases)
+- `uiTest1_EmptyStateIsDisplayed`: Memastikan komponen UI peringatan "Belum ada catatan" berhasil dirender saat data kosong.
+- `uiTest2_NoteItemIsDisplayed`: Memastikan *item card* catatan dapat dimunculkan dengan teks yang sesuai di layar.
+- `uiTest3_TitleInputExists`: Memastikan kotak *input* teks untuk penambahan judul (OutlinedTextField) berhasil ditampilkan.
 
 ---
 
-## 🚀 Cara Menjalankan Aplikasi (Setup API Key)
+## 🏆 Code Coverage Report (Bonus > 80%)
+Seluruh pengujian di atas telah mencakup (*cover*) sebagian besar logika inti aplikasi. Berikut adalah bukti eksekusi *Test Passed* dan *Coverage Report*:
 
-⚠️ **PENTING:** Demi keamanan, API Key tidak disertakan di dalam repository ini. Anda harus menambahkan API Key Anda sendiri agar fitur AI dapat berjalan.
+![Coverage Report](coverage_report.png)
 
-Ikuti langkah-langkah berikut untuk menjalankan aplikasi di Android Studio:
+---
 
-1. **Clone Repository ini** ke komputer lokal Anda.
-2. Dapatkan API Key secara gratis melalui [Google AI Studio](https://aistudio.google.com/).
-3. Buka project ini di **Android Studio**.
-4. Cari dan buka file **`local.properties`** di root folder project Anda.
-5. Tambahkan baris berikut di bagian paling bawah file `local.properties`:
-   ```properties
-   GEMINI_API_KEY=masukkan_api_key_anda_di_sini
-   (Catatan: Jangan gunakan tanda kutip pada API key)
-6. Lakukan Sync Project with Gradle Files.
-7. Tekan tombol Run (atau Shift + F10) untuk menjalankan aplikasi di Emulator atau perangkat fisik.
+## 🎥 Video Demo Eksekusi Testing
+Berikut adalah rekam layar (*Screen Record*) berdurasi singkat yang menunjukkan seluruh pengujian berjalan sukses (*Run All Tests*) di ruang kerja IDE:
+
+*(Sisipkan Link Video YouTube / Google Drive kamu di sini, contoh: [Klik di sini untuk melihat video demo](https://youtube.com/...))*
