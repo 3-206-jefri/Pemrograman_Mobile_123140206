@@ -39,4 +39,4 @@ Seluruh pengujian di atas telah mencakup (*cover*) sebagian besar logika inti ap
 ## 🎥 Video Demo Eksekusi Testing
 Berikut adalah rekam layar (*Screen Record*) berdurasi singkat yang menunjukkan seluruh pengujian berjalan sukses (*Run All Tests*) di ruang kerja IDE:
 
-*(Sisipkan Link Video YouTube / Google Drive kamu di sini, contoh: [Klik di sini untuk melihat video demo](https://youtube.com/...))*
+* [Klik di sini untuk melihat video demo](https://drive.google.com/file/d/1SmG5YquvRPlKrP4O0nOgsol4IvJVAH2T/view?usp=sharing)*
